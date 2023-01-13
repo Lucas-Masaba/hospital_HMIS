@@ -1,5 +1,5 @@
 class VisitsController < ApplicationController
-  before_action :set_visit, only: %i[ show update destroy ]
+  before_action :set_visit, only: %i[show update destroy]
 
   # GET /visits
   def index
@@ -39,13 +39,15 @@ class VisitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_visit
-      @visit = Visit.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def visit_params
-      params.require(:visit).permit(:visit_no, :visit_owner, :visit_date, :visit_type, :visit_category, :speciality, :member_no, :service)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_visit
+    @visit = Visit.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def visit_params
+    params.require(:visit).permit(:visit_no, :visit_owner, :visit_date, :visit_type, :visit_category, :speciality,
+                                  :member_no, :service)
+  end
 end
