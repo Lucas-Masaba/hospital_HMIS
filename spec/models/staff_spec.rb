@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Staff, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { Staff.new(email: 'Tom', password: 'password') }
+
+  before { subject.save }
+
+  it 'name should be present' do
+    subject.email = nil
+    expect(subject).to_not be_valid
+  end
 end
