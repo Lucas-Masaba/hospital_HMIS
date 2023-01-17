@@ -1,12 +1,19 @@
-name: Tests
-on:
-  pull_request:
-
+name: Run RSpec tests
+on: [pull_request]
 jobs:
-  build:
+  run-rspec-tests:
+    runs-on: ubuntu-latest
     steps:
-      - name: Test
-        run: bundle exec rspec
-
-      - name: Simplecov Report
-        uses: Lucas-Masaba/simplecov-report-action@v1
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+      - name: Run tests
+        run: |
+          bundle exec rspec
+      - name: Add code coverage comment
+        uses: Lucas-Masaba/simplecov-check-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
