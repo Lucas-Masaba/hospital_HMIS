@@ -22,9 +22,9 @@ jobs:
 
       - name: Run tests
         run: |
-          bundle exec rspec specs/
+          bundle exec rspec spec/
       # Using the current repo to perform coverage analysis
-      - uses: Lucas-Masaba/hospital_HMIS@authentication
+      - uses: Lucas-Masaba/hospital_HMIS@main
         with:
           minimum_suite_coverage: 85
           minimum_file_coverage: 70
