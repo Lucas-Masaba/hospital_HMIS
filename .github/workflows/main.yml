@@ -14,6 +14,6 @@ jobs:
         run: |
           bundle exec rspec
       - name: Add code coverage comment
-        uses: Lucas-Masaba/hospital_HMIS@dev
+        uses: Lucas-Masaba/hospital_HMIS@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
