@@ -1,31 +1,31 @@
-name: 'SimpleCov+ Action'
-description: 'Enabling SimpleCov support for Github Actions'
-author: 'Josh Frankel'
-inputs:
-  github_token:
-    description: 'Github token for create checks'
-    required: true
-  check_job_name:
-    description: "The name of the check's job"
-    default: 'SimpleCov'
-  minimum_suite_coverage:
-    description: 'Minimum test suite coverage percentage'
-    default: 90
-  minimum_file_coverage:
-    description: 'Minimum coverage percent for every file (requres simplecov-json)'
-    default: 70
-  coverage_path:
-    description: 'File path to coverage results'
-    default: 'coverage/.last_run.json'
-  coverage_json_path:
-    description: 'File path to simplecov-json coverage results (only when using simplecov-json)'
-    default: 'coverage/coverage.json'
-  debug_mode:
-    description: 'Display logs for debugging'
-    default: false
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-branding:
-  icon: 'check-circle'
-  color: 'gray-dark'
+name: Testing
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - dev
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler: default
+          bundler-cache: true
+
+      - name: Run tests
+        run: |
+          bundle exec rspec specs/
+      # Using the current repo to perform coverage analysis
+      - uses: Lucas-Masaba/hospital_HMIS@main
+        with:
+          minimum_suite_coverage: 85
+          minimum_file_coverage: 70
+          github_token: ${{ secrets.GITHUB_TOKEN }}
