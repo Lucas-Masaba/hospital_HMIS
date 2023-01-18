@@ -1,5 +1,5 @@
-require 'spec_helper'
-# require 'rails_helper'
+# require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe 'Staff', type: :model do
   # subject { Staff.new(email: 'Tom', password: 'password') }
