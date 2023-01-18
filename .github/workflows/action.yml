@@ -24,7 +24,7 @@ jobs:
         run: |
           bundle exec rspec spec/
       # Using the current repo to perform coverage analysis
-      - uses: Lucas-Masaba/hospital_HMIS@main
+      - uses: Lucas-Masaba/hospital_HMIS@authentication
         with:
           minimum_suite_coverage: 85
           minimum_file_coverage: 70
