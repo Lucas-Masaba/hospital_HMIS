@@ -14,6 +14,6 @@ jobs:
         run: |
           bundle exec rspec
       - name: Add code coverage comment
-        uses: Lucas-Masaba/simplecov-check-action@main
+        uses: Lucas-Masaba/hospital_HMIS@dev
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
