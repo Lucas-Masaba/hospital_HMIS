@@ -22,7 +22,7 @@ jobs:
 
       - name: Run tests
         run: |
-          bundle exec rspec specs/
+          bundle exec rspec spec/
       # Using the current repo to perform coverage analysis
       - uses: actions/checkout@v2
         with:
