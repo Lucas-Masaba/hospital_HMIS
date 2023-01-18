@@ -28,4 +28,3 @@ jobs:
         with:
           minimum_suite_coverage: 85
           minimum_file_coverage: 70
-          github_token: ${{ secrets.GITHUB_TOKEN }}
