@@ -17,11 +17,11 @@ RSpec.describe "/prescriptions", type: :request do
   # Prescription. As you add validations to Prescription, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {:product=>'paracetamol', :quantity=>2,:symbol=>'*', :dose=>3, :days=>5, :stock=>30, :visit_id=>rand(1..10000)}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {:product=>'', :quantity=>'', :dose=>'', :symbol=>'', :days=>'', :stock=>''}
   }
 
   # This should return the minimal set of values that should be in the headers
@@ -29,13 +29,13 @@ RSpec.describe "/prescriptions", type: :request do
   # PrescriptionsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
-    {}
+    { 'Content-Type' => 'application/json' }
   }
 
   describe "GET /index" do
     it "renders a successful response" do
       Prescription.create! valid_attributes
-      get prescriptions_url, headers: valid_headers, as: :json
+      get visit_prescriptions_path, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
@@ -43,7 +43,7 @@ RSpec.describe "/prescriptions", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       prescription = Prescription.create! valid_attributes
-      get prescription_url(prescription), as: :json
+      get visit_prescription_path(prescription), as: :json
       expect(response).to be_successful
     end
   end
@@ -52,13 +52,13 @@ RSpec.describe "/prescriptions", type: :request do
     context "with valid parameters" do
       it "creates a new Prescription" do
         expect {
-          post prescriptions_url,
+          post visit_prescriptions_path,
                params: { prescription: valid_attributes }, headers: valid_headers, as: :json
         }.to change(Prescription, :count).by(1)
       end
 
       it "renders a JSON response with the new prescription" do
-        post prescriptions_url,
+        post visit_prescriptions_path,
              params: { prescription: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -68,13 +68,13 @@ RSpec.describe "/prescriptions", type: :request do
     context "with invalid parameters" do
       it "does not create a new Prescription" do
         expect {
-          post prescriptions_url,
+          post visit_prescriptions_path,
                params: { prescription: invalid_attributes }, as: :json
         }.to change(Prescription, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new prescription" do
-        post prescriptions_url,
+        post visit_prescriptions_path,
              params: { prescription: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -85,20 +85,20 @@ RSpec.describe "/prescriptions", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {:product=>'magnesium', :quantity=>2,:symbol=>'*', :dose=>3, :days=>5, :stock=>30, :visit_id=>rand(1..10000)}
       }
 
       it "updates the requested prescription" do
         prescription = Prescription.create! valid_attributes
-        patch prescription_url(prescription),
+        patch visit_prescription_path(prescription),
               params: { prescription: new_attributes }, headers: valid_headers, as: :json
         prescription.reload
-        skip("Add assertions for updated state")
+        {:product=>'magnesium', :quantity=>2,:symbol=>'*', :dose=>3, :days=>5, :stock=>30, :visit_id=>rand(1..10000)}
       end
 
       it "renders a JSON response with the prescription" do
         prescription = Prescription.create! valid_attributes
-        patch prescription_url(prescription),
+        patch visit_prescription_path(prescription),
               params: { prescription: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -108,7 +108,7 @@ RSpec.describe "/prescriptions", type: :request do
     context "with invalid parameters" do
       it "renders a JSON response with errors for the prescription" do
         prescription = Prescription.create! valid_attributes
-        patch prescription_url(prescription),
+        patch visit_prescription_path(prescription),
               params: { prescription: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -120,7 +120,7 @@ RSpec.describe "/prescriptions", type: :request do
     it "destroys the requested prescription" do
       prescription = Prescription.create! valid_attributes
       expect {
-        delete prescription_url(prescription), headers: valid_headers, as: :json
+        delete visit_prescription_path(prescription), headers: valid_headers, as: :json
       }.to change(Prescription, :count).by(-1)
     end
   end
