@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  devise_for :staffs, controllers: {
+    sessions: 'staffs/sessions',
+    registrations: 'staffs/registrations'
+  }
 end
