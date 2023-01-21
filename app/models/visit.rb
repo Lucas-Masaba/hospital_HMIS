@@ -12,7 +12,7 @@ class Visit < ApplicationRecord
   # has_many :lab_results, dependent: :destroy
   # has_many :pharmacies, dependent: :destroy
 
-  validates :visit_owner, presence: true, length: { minimum: 3, maximum: 30 }
+  validates :visit_owner, presence: true, length: { minimum: 3, maximum: 20 }
   validates :visit_type, presence: true, length: { minimum: 3, maximum: 10 }
   validates :visit_date, presence: true
   validates :visit_category, presence: true, length: { minimum: 3, maximum: 10 }
