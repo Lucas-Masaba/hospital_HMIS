@@ -17,11 +17,14 @@ RSpec.describe '/visits', type: :request do
   # Visit. As you add validations to Visit, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    # skip('Add a hash of attributes valid for your model')
+    { visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+      visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Consultation' }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { visit_no: '', visit_owner: '', visit_date: '2023-01', visit_type: '', visit_category: '', speciality: '',
+      member_no: '', service: '' }
   end
 
   # This should return the minimal set of values that should be in the headers
@@ -29,13 +32,13 @@ RSpec.describe '/visits', type: :request do
   # VisitsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) do
-    {}
+    { 'Content-Type' => 'application/json' }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
       Visit.create! valid_attributes
-      get visits_url, headers: valid_headers, as: :json
+      get visits_path, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
@@ -43,7 +46,7 @@ RSpec.describe '/visits', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       visit = Visit.create! valid_attributes
-      get visit_url(visit), as: :json
+      get visit_path(visit), as: :json
       expect(response).to be_successful
     end
   end
@@ -52,13 +55,13 @@ RSpec.describe '/visits', type: :request do
     context 'with valid parameters' do
       it 'creates a new Visit' do
         expect do
-          post visits_url,
+          post visits_path,
                params: { visit: valid_attributes }, headers: valid_headers, as: :json
         end.to change(Visit, :count).by(1)
       end
 
       it 'renders a JSON response with the new visit' do
-        post visits_url,
+        post visits_path,
              params: { visit: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including('application/json'))
@@ -68,13 +71,13 @@ RSpec.describe '/visits', type: :request do
     context 'with invalid parameters' do
       it 'does not create a new Visit' do
         expect do
-          post visits_url,
+          post visits_path,
                params: { visit: invalid_attributes }, as: :json
         end.to change(Visit, :count).by(0)
       end
 
       it 'renders a JSON response with errors for the new visit' do
-        post visits_url,
+        post visits_path,
              params: { visit: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including('application/json'))
@@ -85,7 +88,8 @@ RSpec.describe '/visits', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+          visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Treatment' }
       end
 
       it 'updates the requested visit' do
@@ -93,7 +97,8 @@ RSpec.describe '/visits', type: :request do
         patch visit_url(visit),
               params: { visit: new_attributes }, headers: valid_headers, as: :json
         visit.reload
-        skip('Add assertions for updated state')
+        { visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+          visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Treatment' }
       end
 
       it 'renders a JSON response with the visit' do
@@ -120,7 +125,7 @@ RSpec.describe '/visits', type: :request do
     it 'destroys the requested visit' do
       visit = Visit.create! valid_attributes
       expect do
-        delete visit_url(visit), headers: valid_headers, as: :json
+        delete visit_path(visit), headers: valid_headers, as: :json
       end.to change(Visit, :count).by(-1)
     end
   end
