@@ -8,7 +8,7 @@ RSpec.describe Visit, type: :model do
 
     context 'visit_owner validations' do
       it 'is invalid without a visit_owner' do
-        expect(build(:visit, visit_owner: nil | "" )).to_not be_valid
+        expect(build(:visit, visit_owner: nil | '')).to_not be_valid
       end
 
       it 'is invalid with a visit_owner that is too short' do
@@ -22,7 +22,7 @@ RSpec.describe Visit, type: :model do
 
     context 'visit_type validations' do
       it 'is invalid without a visit_type' do
-        expect(build(:visit, visit_type: nil | "" )).to_not be_valid
+        expect(build(:visit, visit_type: nil | '')).to_not be_valid
       end
 
       it 'is invalid with a visit_type that is too short' do
@@ -38,12 +38,11 @@ RSpec.describe Visit, type: :model do
       it 'is invalid without a visit_date' do
         expect(build(:visit, visit_date: nil)).to_not be_valid
       end
-
     end
 
     context 'visit_category validations' do
       it 'is invalid without a visit_category' do
-        expect(build(:visit, visit_category: nil | "" )).to_not be_valid
+        expect(build(:visit, visit_category: nil | '')).to_not be_valid
       end
 
       it 'is invalid with a visit_category that is too short' do

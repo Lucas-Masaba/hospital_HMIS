@@ -18,11 +18,13 @@ RSpec.describe '/visits', type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) do
     # skip('Add a hash of attributes valid for your model')
-    {:visit_no=>'2', :visit_owner=>'Caitylyn', :visit_date=>'2023-01-23', :visit_type=>'review', :visit_category=>'insurance', :speciality=>'cardiology', :member_no=>'2A5R2', :service=>'Consultation'}
+    { visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+      visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Consultation' }
   end
 
   let(:invalid_attributes) do
-    {:visit_no=>'', :visit_owner=>'', :visit_date=>'2023-01', :visit_type=>'', :visit_category=>'', :speciality=>'', :member_no=>'', :service=>''}
+    { visit_no: '', visit_owner: '', visit_date: '2023-01', visit_type: '', visit_category: '', speciality: '',
+      member_no: '', service: '' }
   end
 
   # This should return the minimal set of values that should be in the headers
@@ -30,7 +32,7 @@ RSpec.describe '/visits', type: :request do
   # VisitsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) do
-    {"Content-Type" => "application/json"}
+    { 'Content-Type' => 'application/json' }
   end
 
   describe 'GET /index' do
@@ -86,7 +88,8 @@ RSpec.describe '/visits', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        {:visit_no=>'2', :visit_owner=>'Caitylyn', :visit_date=>'2023-01-23', :visit_type=>'review', :visit_category=>'insurance', :speciality=>'cardiology', :member_no=>'2A5R2', :service=>'Treatment'}
+        { visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+          visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Treatment' }
       end
 
       it 'updates the requested visit' do
@@ -94,7 +97,8 @@ RSpec.describe '/visits', type: :request do
         patch visit_url(visit),
               params: { visit: new_attributes }, headers: valid_headers, as: :json
         visit.reload
-        {:visit_no=>'2', :visit_owner=>'Caitylyn', :visit_date=>'2023-01-23', :visit_type=>'review', :visit_category=>'insurance', :speciality=>'cardiology', :member_no=>'2A5R2', :service=>'Treatment'}
+        { visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+          visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Treatment' }
       end
 
       it 'renders a JSON response with the visit' do
