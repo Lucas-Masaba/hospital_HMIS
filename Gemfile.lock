@@ -281,6 +281,7 @@ DEPENDENCIES
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   simplecov
+  simplecov_json_formatter
   tzinfo-data
   webdrivers
 
@@ -288,4 +289,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.1
+   2.4.5
