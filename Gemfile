@@ -56,6 +56,7 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
+  gem 'simplecov_json_formatter', require: false
   gem 'webdrivers'
 end
 
