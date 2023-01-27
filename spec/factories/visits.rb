@@ -8,13 +8,5 @@ FactoryBot.define do
     member_no { Faker::Number.number(digits: 10) }
     service { Faker::Lorem.word }
     visit_no { Faker::Number.number(digits: 1) }
-    # visit_owner {'John Doe'}
-    # visit_type {'review'}
-    # visit_date {'2021-01-01'}
-    # visit_category {'insurance'}
-    # speciality {'cardiology'}
-    # member_no {'123E567A9'}
-    # service {'consultation'}
-    # visit_no {3}
   end
 end
