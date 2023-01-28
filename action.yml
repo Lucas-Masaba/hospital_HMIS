@@ -29,3 +29,34 @@ runs:
 branding:
   icon: 'check-circle'
   color: 'gray-dark'
+
+#   name: Testing
+
+# on:
+#   pull_request:
+#     branches:
+#       - '*'
+#   push:
+#     branches:
+#       - dev
+# jobs:
+#   rspec:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Setup Ruby
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           bundler: default
+#           bundler-cache: true
+
+#       - name: Run tests
+#         run: |
+#           bundle exec rspec spec/
+#       # Using the current repo to perform coverage analysis
+#       - uses: actions/checkout@v3
+#         with:
+#           minimum_suite_coverage: 85
+#           minimum_file_coverage: 70
