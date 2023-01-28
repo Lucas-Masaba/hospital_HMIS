@@ -21,30 +21,30 @@
     },
     "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/application_controller.rb": {
       "lines": [
-        1,
-        null
+        0,
+        0
       ]
     },
     "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs/registrations_controller.rb": {
       "lines": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        2,
-        2,
-        null,
-        null,
+        0,
+        0,
         null,
         0,
         null,
-        null,
-        null,
-        null,
-        null,
-        null
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     },
     "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs/sessions_controller.rb": {
@@ -73,6 +73,17 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs_controller.rb": {
+      "lines": [
+        0,
+        0,
+        null,
         0,
         0,
         0,
@@ -118,7 +129,7 @@
         1,
         null,
         1,
-        2,
+        0,
         null,
         null
       ]
@@ -127,7 +138,7 @@
   "groups": {
     "Controllers": {
       "lines": {
-        "covered_percent": 21.21212121212121
+        "covered_percent": 0.0
       }
     },
     "Channels": {
@@ -137,7 +148,7 @@
     },
     "Models": {
       "lines": {
-        "covered_percent": 100.0
+        "covered_percent": 87.5
       }
     },
     "Mailers": {

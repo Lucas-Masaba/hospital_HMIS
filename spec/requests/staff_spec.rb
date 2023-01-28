@@ -1,40 +1,39 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /signup', type: :request do
-  # let(:url) { 'http://localhost:3000/staffs' }
-  # let(:params) do
-  #   {
-  #     staff: {
-  #       email: 'staff@example.com',
-  #       password: 'password'
-  #     }
-  #   }
-  # end
+require 'json'
 
-  # context 'when staff is unauthenticated' do
-  #   before { post url, params: params }
+RSpec.describe 'POST /staffs', type: :request do
+  let(:staff) { create(:staff) }
+  let(:url) { '/staffs/sign_in' }
+  let(:params) do
+    {
+      staff: {
+        email: staff.email,
+        password: staff.password
+      }
+    }
+  end
 
-  #   it 'returns 200' do
-  #     expect(response.status).to eq 200
-  #   end
+  context 'when params are correct' do
+    before do
+      post url, params: params.to_json,
+                headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    end
 
-  #   it 'returns a new staff' do
-  #     expect(response.body).to match_schema('staff')
-  #   end
-  # end
+    it 'returns 200' do
+      expect(response).to have_http_status(200)
+    end
 
-  # context 'when staff already exists' do
-  #   before do
-  #     Fabricate :staff, email: params[:staff][:email]
-  #     post url, params: params
-  #   end
+    it 'returns JWT token in authorization header' do
+      expect(response.headers['authorization']).to be_present
+    end
+  end
 
-  #   it 'returns bad request status' do
-  #     expect(response.status).to eq 400
-  #   end
+  context 'when login params are incorrect' do
+    before { post url }
 
-  #   it 'returns validation errors' do
-  #     expect(json['errors'].first['title']).to eq('Bad Request')
-  #   end
-  # end
+    it 'returns unathorized status' do
+      expect(response.status).to eq 401
+    end
+  end
 end

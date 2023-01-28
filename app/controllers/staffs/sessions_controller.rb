@@ -16,7 +16,7 @@ class Staffs::SessionsController < Devise::SessionsController
     if current_staff
       render json: {
         status: 200,
-        message: 'Signed out successfully',
+        message: 'Signed out successfully'
       }, status: :ok
     else
       render json: {
