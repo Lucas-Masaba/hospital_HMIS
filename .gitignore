@@ -31,3 +31,4 @@
 # Ignore environment variables
 /config/local_env.yml
 echo coverage >> .gitignore
+.env
