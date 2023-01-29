@@ -8,7 +8,7 @@ RSpec.describe Visit, type: :model do
       end
 
       it 'is invalid with a visit_owner that is too short' do
-        expect(build(:visit, visit_owner: 'aa')).to_not be_valid
+        expect(build(:visit, visit_owner: 'a' *  2)).to_not be_valid
       end
 
       it 'is invalid with a visit_owner that is too long' do
