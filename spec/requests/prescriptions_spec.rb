@@ -40,7 +40,7 @@ RSpec.describe "/prescriptions", type: :request do
 
   describe 'GET #show' do
     it 'returns http success' do
-      get visit_prescription_path(:visit_id, :id=>@prescription.id)
+      get visit_prescription_path(:visit_id, :id => "@prescription.id")
       expect(response).to have_http_status(:success)
     end
   end
