@@ -40,17 +40,17 @@ RSpec.describe "/prescriptions", type: :request do
 
   describe 'GET #show' do
     it 'returns http success' do
-      get visit_prescription_path(:visit_id, id: @prescription.id)
+      get visit_prescription_path(:visit_id=> @visit.id, :id=> @prescription.id)
       expect(response).to have_http_status(:success)
     end
   end
 
-  # describe 'PATCH #update' do
-  #   it 'returns http success' do
-  #     patch visit_prescription_path(visit_id: @visit.id, prescription: @prescription, id: @prescription.id)
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe 'PATCH #update' do
+    it 'returns http success' do
+      patch visit_prescription_path(visit_id: @visit.id, id: @prescription.id)
+      expect(response).to have_http_status(:success)
+    end
+  end
 
   # let(:valid_attributes) {
   #   {:product=>'paracetamol', :quantity=>2,:symbol=>'*', :dose=>3, :days=>5, :stock=>30, :visit_id=>1}
