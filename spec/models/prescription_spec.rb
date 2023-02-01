@@ -15,9 +15,9 @@ RSpec.describe Prescription, type: :model do
         expect(build(:prescription, product: 'a' * 2)).to_not be_valid
       end
 
-      # it 'is invalid with a product that is too long' do
-      #   expect(build(:prescription, product: 'a' * 50)).to_not be_valid
-      # end
+      it 'is invalid with a product that is too long' do
+        expect(build(:prescription, product: 'a' * 51)).to_not be_valid
+      end
     end
 
     # context 'quantity validations' do
@@ -50,10 +50,10 @@ RSpec.describe Prescription, type: :model do
     #   end
     # end
 
-    # context 'visit_id validations' do
-    #   it 'is invalid without a visit_id' do
-    #     expect(build(:prescription, visit_id: nil | '')).to_not be_valid
-    #   end
-    # end
+    context 'visit_id validations' do
+      it 'is invalid without a visit_id' do
+        expect(build(:prescription, visit_id: nil | '')).to_not be_valid
+      end
+    end
   end
 end
