@@ -99,6 +99,10 @@ GEM
       warden-jwt_auth (~> 0.6)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     dry-auto_inject (0.9.0)
       dry-container (>= 0.3.4)
     dry-configurable (0.16.1)
@@ -110,6 +114,13 @@ GEM
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.1.0)
+      i18n (>= 1.8.11, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -273,6 +284,9 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  dotenv-rails
+  factory_bot_rails
+  faker
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
