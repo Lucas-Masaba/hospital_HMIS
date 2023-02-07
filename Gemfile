@@ -43,6 +43,7 @@ group :development, :test do
   gem 'faker'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'dotenv-rails'
   gem 'rspec-rails'
 end
 

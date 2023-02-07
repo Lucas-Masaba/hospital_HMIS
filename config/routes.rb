@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     sessions: 'staffs/sessions',
     registrations: 'staffs/registrations'
   }
+
+  get '/staff_details' => 'staffs#index'
 end

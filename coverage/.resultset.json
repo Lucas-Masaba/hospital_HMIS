@@ -241,7 +241,7 @@
           1,
           null,
           1,
-          2,
+          0,
           null,
           null
         ]
@@ -571,34 +571,6 @@
           null
         ]
       },
-      "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs/registrations_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          2,
-          2,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
@@ -611,6 +583,38 @@
       },
       "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/channels/application_cable/connection.rb": {
         "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs/registrations_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -653,6 +657,19 @@
         "branches": {
         }
       },
+      "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -677,6 +694,6 @@
         }
       }
     },
-    "timestamp": 1674563647
+    "timestamp": 1674924656
   }
 }

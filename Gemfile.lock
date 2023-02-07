@@ -100,6 +100,10 @@ GEM
       warden-jwt_auth (~> 0.6)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     dry-auto_inject (0.9.0)
       dry-container (>= 0.3.4)
     dry-configurable (0.16.1)
@@ -121,6 +125,7 @@ GEM
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
     formatador (1.1.0)
+
     globalid (1.0.0)
       activesupport (>= 5.0)
     guard (2.18.0)
@@ -322,6 +327,9 @@ DEPENDENCIES
   guard-rspec
   devise
   devise-jwt
+  dotenv-rails
+  factory_bot_rails
+  faker
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
