@@ -42,6 +42,8 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'rspec-rails'
 end
 
