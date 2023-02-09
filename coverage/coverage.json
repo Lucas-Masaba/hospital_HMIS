@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "simplecov_version": "0.22.0"
+  },
+  "coverage": {
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/channels/application_cable/channel.rb": {
+      "lines": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/channels/application_cable/connection.rb": {
+      "lines": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/application_controller.rb": {
+      "lines": [
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs/registrations_controller.rb": {
+      "lines": [
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs/sessions_controller.rb": {
+      "lines": [
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/controllers/staffs_controller.rb": {
+      "lines": [
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/jobs/application_job.rb": {
+      "lines": [
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/mailers/application_mailer.rb": {
+      "lines": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/models/application_record.rb": {
+      "lines": [
+        1,
+        1,
+        null
+      ]
+    },
+    "/mnt/d/backup/Hospital Management System/hospital_HMIS/app/models/staff.rb": {
+      "lines": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    }
+  },
+  "groups": {
+    "Controllers": {
+      "lines": {
+        "covered_percent": 0.0
+      }
+    },
+    "Channels": {
+      "lines": {
+        "covered_percent": 0.0
+      }
+    },
+    "Models": {
+      "lines": {
+        "covered_percent": 87.5
+      }
+    },
+    "Mailers": {
+      "lines": {
+        "covered_percent": 0.0
+      }
+    },
+    "Helpers": {
+      "lines": {
+        "covered_percent": 100.0
+      }
+    },
+    "Jobs": {
+      "lines": {
+        "covered_percent": 0.0
+      }
+    },
+    "Libraries": {
+      "lines": {
+        "covered_percent": 100.0
+      }
+    }
+  }
+}

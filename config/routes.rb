@@ -6,4 +6,11 @@ Rails.application.routes.draw do
   resources :visits do
     resources :prescriptions
   end
+  
+  devise_for :staffs, controllers: {
+    sessions: 'staffs/sessions',
+    registrations: 'staffs/registrations'
+  }
+
+  get '/staff_details' => 'staffs#index'
 end

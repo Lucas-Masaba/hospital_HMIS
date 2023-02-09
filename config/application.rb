@@ -24,12 +24,9 @@ module HospitalHmis
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    # config.before_configuration do
-    #   env_file = File.join(Rails.root, 'config', 'local_env.yml')
-    #   YAML.load(File.open(env_file)).each do |key, value|
-    #     ENV[key.to_s] = value
-    #   end if File.exists?(env_file)
-    # end
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
 
   end
 end
