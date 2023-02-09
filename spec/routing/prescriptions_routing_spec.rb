@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe PrescriptionsController, type: :routing do
   # before(:example) do
@@ -8,17 +8,13 @@ RSpec.describe PrescriptionsController, type: :routing do
   #   @prescription.save
   # end
 
-  describe "routing" do
-    # it "routes to #index" do
-    #   expect(:get => visit_prescriptions_path(:visit_id => @visit.id)).to route_to(:controller => "prescriptions", :action => "index", :visit_id => @visit.id.to_s)
-    # end
-
+  describe 'routing' do
     it 'routes to #index' do
       expect(get: '/visits/1/prescriptions').to route_to('prescriptions#index', visit_id: '1')
     end
 
     it 'routes to #show' do
-      expect(get: '/visits/1/prescriptions/1').to route_to('prescriptions#show', visit_id:'1', id: '1')
+      expect(get: '/visits/1/prescriptions/1').to route_to('prescriptions#show', visit_id: '1', id: '1')
     end
 
     it 'routes to #create' do
@@ -26,7 +22,7 @@ RSpec.describe PrescriptionsController, type: :routing do
     end
 
     it 'routes to #update via PUT' do
-      expect(put: '/visits/1/prescriptions/1').to route_to('prescriptions#update', visit_id:'1', id: '1')
+      expect(put: '/visits/1/prescriptions/1').to route_to('prescriptions#update', visit_id: '1', id: '1')
     end
 
     it 'routes to #update via PATCH' do
@@ -36,26 +32,5 @@ RSpec.describe PrescriptionsController, type: :routing do
     it 'routes to #destroy' do
       expect(delete: '/visits/1/prescriptions/1').to route_to('prescriptions#destroy', visit_id: '1', id: '1')
     end
-
-    # it "routes to #post" do
-    #   expect(:post => visit_prescriptions_path(:visit_id => @visit.id)).to route_to("prescriptions#create", :visit_id => @visit.id.to_s)
-    # end
-
-
-    # it "routes to #get" do
-    #   expect(:get => visit_prescription_path(:visit_id => @visit.id, :id => @prescription.id)).to route_to("prescriptions#show", :visit_id => @visit.id.to_s, :id => @prescription.id.to_s)
-    # end
-
-    # it "routes to #update via PUT" do
-    #   expect(:put => visit_prescription_path(:visit_id => @visit.id, :id => @prescription.id)).to route_to("prescriptions#update", :visit_id => @visit.id.to_s, :id => @prescription.id.to_s)
-    # end
-
-    # # it "routes to #update via PATCH" do
-    # #   expect(patch: "/prescriptions/1").to route_to("prescriptions#update", id: "1")
-    # # end
-
-    # it "routes to #destroy" do
-    #   expect(:delete => visit_prescription_path(:visit_id => @visit.id, :id => @prescription.id)).to route_to("prescriptions#destroy", :visit_id => @visit.id.to_s, :id => @prescription.id.to_s)
-    # end
   end
 end

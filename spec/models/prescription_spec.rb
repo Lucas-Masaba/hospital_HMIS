@@ -4,7 +4,7 @@ RSpec.describe Prescription, type: :model do
   before(:example) do
     @visit = build(:visit)
     @visit.save
-    @prescription = build(:prescription , visit_id: @visit.id)
+    @prescription = build(:prescription, visit_id: @visit.id)
     @prescription.save
   end
 
@@ -26,7 +26,7 @@ RSpec.describe Prescription, type: :model do
         expect(build(:prescription, product: 'a' * 51)).to_not be_valid
       end
     end
-    
+
     context 'visit_id validations' do
       it 'is invalid without a visit_id' do
         expect(build(:prescription, visit_id: nil | '')).to_not be_valid

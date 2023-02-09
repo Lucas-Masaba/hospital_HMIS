@@ -1,5 +1,5 @@
 class PrescriptionsController < ApplicationController
-  before_action :set_prescription, only: %i[ show update destroy ]
+  before_action :set_prescription, only: %i[show update destroy]
 
   # GET /prescriptions
   def index
@@ -39,13 +39,14 @@ class PrescriptionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_prescription
-      @prescription = Prescription.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def prescription_params
-      params.require(:prescription).permit(:product, :quantity, :dose, :symbol, :days, :stock, :visit_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_prescription
+    @prescription = Prescription.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def prescription_params
+    params.require(:prescription).permit(:product, :quantity, :dose, :symbol, :days, :stock, :visit_id)
+  end
 end
