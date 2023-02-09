@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
 ActiveRecord::Schema[7.0].define(version: 2023_01_26_165533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,21 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_165533) do
     t.bigint "visit_id", null: false
     t.index ["visit_id"], name: "index_prescriptions_on_visit_id"
   end
-
-  create_table "visits", force: :cascade do |t|
-    t.integer "visit_no"
-    t.string "visit_owner"
-    t.date "visit_date"
-    t.text "visit_type"
-    t.text "visit_category"
-    t.string "speciality"
-    t.string "member_no"
-    t.string "service"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "prescriptions", "visits"
 
   create_table "staffs", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -63,5 +46,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_165533) do
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.integer "visit_no"
+    t.string "visit_owner"
+    t.date "visit_date"
+    t.text "visit_type"
+    t.text "visit_category"
+    t.string "speciality"
+    t.string "member_no"
+    t.string "service"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
+  add_foreign_key "prescriptions", "visits"
 end
