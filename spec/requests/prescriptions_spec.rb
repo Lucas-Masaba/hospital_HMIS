@@ -19,7 +19,7 @@ RSpec.describe "/prescriptions", type: :request do
   before(:example) do
     @visit = build(:visit)
     @visit.save
-    @prescription = build(:prescription , visit_id: @visit.id)
+    @prescription = build(:prescription , :visit_id => @visit.id)
     @prescription.save
   end
 
