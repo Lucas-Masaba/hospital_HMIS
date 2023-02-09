@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Prescription, type: :model do
+  before(:example) do
+    @visit = build(:visit)
+    @visit.save
+    @prescription = build(:prescription , visit_id: @visit.id)
+    @prescription.save
+  end
+  
   describe '#valid?' do
     it 'has a valid factory' do
       expect(build(:prescription)).to be_valid
