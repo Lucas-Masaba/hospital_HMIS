@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NormalRange, type: :model do
-  subject { NormalRange.new(name: 'Heart Beat', upper_range: 30000, lower_range: 20000, unit: 'bps') }
+  subject { NormalRange.new(name: 'Heart Beat', upper_range: 30_000, lower_range: 20_000, unit: 'bps') }
 
   before { subject.save }
 
