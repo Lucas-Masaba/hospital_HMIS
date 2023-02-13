@@ -10,15 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_10_145450) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_13_152831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lab_results", force: :cascade do |t|
+    t.string "lab_result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lab_tests", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "status"
+    t.string "referral_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "normal_ranges", force: :cascade do |t|
     t.string "name"
     t.float "lower_range"
     t.float "upper_range"
     t.string "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.text "name"
+    t.integer "age"
+    t.bigint "gender"
+    t.date "date_of_birth"
+    t.string "address"
+    t.bigint "phone_number"
+    t.string "next_of_kin"
+    t.bigint "next_of_kin_phone"
+    t.string "next_of_kin_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radiology_exams", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
