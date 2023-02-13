@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_13_152831) do
   create_table "patients", force: :cascade do |t|
     t.text "name"
     t.integer "age"
-    t.bigint "gender"
+    t.text "gender"
     t.date "date_of_birth"
     t.string "address"
     t.bigint "phone_number"
