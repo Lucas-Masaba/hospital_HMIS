@@ -14,6 +14,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_170116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "lab_tests", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "status"
+    t.string "referral_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "normal_ranges", force: :cascade do |t|
     t.string "name"
     t.float "lower_range"

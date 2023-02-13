@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   }
 
   get '/staff_details' => 'staffs#index'
+
+  resources :lab_tests
 end
