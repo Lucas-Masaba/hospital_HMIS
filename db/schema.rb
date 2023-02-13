@@ -10,21 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_26_165533) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_12_170116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "prescriptions", force: :cascade do |t|
-    t.string "product"
-    t.integer "quantity"
-    t.integer "dose"
-    t.string "symbol"
-    t.integer "days"
-    t.integer "stock"
+  create_table "lab_results", force: :cascade do |t|
+    t.string "lab_result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "visit_id", null: false
-    t.index ["visit_id"], name: "index_prescriptions_on_visit_id"
+  end
+
+  create_table "lab_tests", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.string "status"
+    t.string "referral_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "normal_ranges", force: :cascade do |t|
+    t.string "name"
+    t.float "lower_range"
+    t.float "upper_range"
+    t.string "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "radiology_exams", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -59,5 +77,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_26_165533) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "prescriptions", "visits"
 end
