@@ -17,11 +17,12 @@ RSpec.describe "/patients", type: :request do
   # Patient. As you add validations to Patient, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    # skip("Add a hash of attributes valid for your model")
+    { name: 'Kemigisa Diana', age: 12, gender: "F", date_of_birth: "2023-01-23", address: 'Kampala', phone_number: +256777777777, next_of_kin: 'Mwine Tom', next_of_kin_phone: +256770773778, next_of_kin_address: 'Kampala' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: 'Kemigisa Diana', age: 12, gender: "F", date_of_birth: "2023-01-23", address: 'Kampala', phone_number: +256777777777, next_of_kin: 'Mwine Tom', next_of_kin_phone: +256770773778, next_of_kin_address: ''} 
   }
 
   # This should return the minimal set of values that should be in the headers
@@ -29,13 +30,13 @@ RSpec.describe "/patients", type: :request do
   # PatientsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
-    {}
+    { 'Content-Type' => 'application/json' }
   }
 
   describe "GET /index" do
     it "renders a successful response" do
       Patient.create! valid_attributes
-      get patients_url, headers: valid_headers, as: :json
+      get patients_path, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
@@ -43,7 +44,7 @@ RSpec.describe "/patients", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       patient = Patient.create! valid_attributes
-      get patient_url(patient), as: :json
+      get patient_path(patient), as: :json
       expect(response).to be_successful
     end
   end
@@ -52,13 +53,13 @@ RSpec.describe "/patients", type: :request do
     context "with valid parameters" do
       it "creates a new Patient" do
         expect {
-          post patients_url,
+          post patients_path,
                params: { patient: valid_attributes }, headers: valid_headers, as: :json
         }.to change(Patient, :count).by(1)
       end
 
       it "renders a JSON response with the new patient" do
-        post patients_url,
+        post patients_path,
              params: { patient: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -68,13 +69,13 @@ RSpec.describe "/patients", type: :request do
     context "with invalid parameters" do
       it "does not create a new Patient" do
         expect {
-          post patients_url,
+          post patients_path,
                params: { patient: invalid_attributes }, as: :json
         }.to change(Patient, :count).by(0)
       end
 
       it "renders a JSON response with errors for the new patient" do
-        post patients_url,
+        post patients_path,
              params: { patient: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -84,21 +85,22 @@ RSpec.describe "/patients", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) do 
+        { name: 'Kemigisa Diana', age: 15, gender: "F", date_of_birth: "2023-01-23", address: 'Kampala', phone_number: +256777777777, next_of_kin: 'Mwine Tom', next_of_kin_phone: +256770773778, next_of_kin_address: 'Kampala' }
+      end
 
       it "updates the requested patient" do
         patient = Patient.create! valid_attributes
-        patch patient_url(patient),
+        patch patient_path(patient),
               params: { patient: new_attributes }, headers: valid_headers, as: :json
         patient.reload
-        skip("Add assertions for updated state")
+        {name: 'Kemigisa Diana', age: 15, gender: "F", date_of_birth: "2023-01-23", address: 'Kampala', phone_number: +256777777777, next_of_kin: 'Mwine Tom', next_of_kin_phone: +256770773778, next_of_kin_address: 'Kampala'}
+
       end
 
       it "renders a JSON response with the patient" do
         patient = Patient.create! valid_attributes
-        patch patient_url(patient),
+        patch patient_path(patient),
               params: { patient: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -108,7 +110,7 @@ RSpec.describe "/patients", type: :request do
     context "with invalid parameters" do
       it "renders a JSON response with errors for the patient" do
         patient = Patient.create! valid_attributes
-        patch patient_url(patient),
+        patch patient_path(patient),
               params: { patient: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including("application/json"))
@@ -120,7 +122,7 @@ RSpec.describe "/patients", type: :request do
     it "destroys the requested patient" do
       patient = Patient.create! valid_attributes
       expect {
-        delete patient_url(patient), headers: valid_headers, as: :json
+        delete patient_path(patient), headers: valid_headers, as: :json
       }.to change(Patient, :count).by(-1)
     end
   end
