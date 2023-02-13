@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe '/lab_results', type: :request do
   let(:valid_attributes) do
     {
-      lab_result: 'Positive'
+      results: 'Positive'
     }
   end
 
   let(:invalid_attributes) do
     {
-      lab_result: 2
+      results: ""
     }
   end
 
@@ -75,7 +75,7 @@ RSpec.describe '/lab_results', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         {
-          lab_result: 'Negative'
+          results: 'Negative'
         }
       end
 
@@ -84,7 +84,7 @@ RSpec.describe '/lab_results', type: :request do
         patch lab_result_url(lab_result),
               params: { lab_result: new_attributes }, headers: valid_headers, as: :json
         lab_result.reload
-        expect(lab_result.lab_result).to eq('Negative')
+        expect(lab_result.results).to eq('Negative')
       end
 
       it 'renders a JSON response with the lab_result' do

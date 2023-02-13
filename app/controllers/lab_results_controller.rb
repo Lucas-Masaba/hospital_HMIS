@@ -47,6 +47,6 @@ class LabResultsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def lab_result_params
-    params.require(:lab_result).permit(:lab_result)
+    params.require(:lab_result).permit(:results)
   end
 end
