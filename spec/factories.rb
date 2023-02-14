@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :prescription do
-    product { "MyString" }
+    product { 'MyString' }
     quantity { 1 }
-    symbol { "MyString" }
+    symbol { 'MyString' }
     dose { 1 }
     days { 1 }
     stock { 1 }
