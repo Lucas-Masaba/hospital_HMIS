@@ -1,0 +1,2 @@
+class VisitNote < ApplicationRecord
+end

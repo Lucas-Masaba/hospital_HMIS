@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :visit_note do
+    complaints { "MyText" }
+    provisional_diagnosis { "MyString" }
+  end
+
   factory :drug do
     name { 'MyString' }
     quantity { 1 }
