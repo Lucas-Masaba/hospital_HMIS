@@ -16,13 +16,17 @@ RSpec.describe "/drugs", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Drug. As you add validations to Drug, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    {
+      name: "Metrogyl", quantity: 100, drug_no: 1, location: "Store1"
+    }
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    {
+      name: "", quantity: 100, drug_no: 1, location: "Store1"
+    }
+  end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
@@ -84,16 +88,20 @@ RSpec.describe "/drugs", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) do
+        {
+          name: "Metrogyl", quantity: 120, drug_no: 1, location: "Store1"
+        }
+      end
 
       it "updates the requested drug" do
         drug = Drug.create! valid_attributes
         patch drug_url(drug),
               params: { drug: new_attributes }, headers: valid_headers, as: :json
         drug.reload
-        skip("Add assertions for updated state")
+        {
+          name: "Metrogyl", quantity: 120, drug_no: 1, location: "Store1"
+        }
       end
 
       it "renders a JSON response with the drug" do
