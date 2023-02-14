@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :visits
   resources :normal_ranges
   resources :radiology_exams
+  resources :diagnoses
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
