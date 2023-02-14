@@ -33,7 +33,7 @@ RSpec.describe '/drugs', type: :request do
   # DrugsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) do
-    {}
+    { 'Content-Type' => 'application/json' }
   end
 
   describe 'GET /index' do
