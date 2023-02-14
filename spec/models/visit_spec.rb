@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Visit, type: :model do
-  subject { Visit.new(visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
-  visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Treatment') }
+  subject do
+    Visit.new(visit_no: '2', visit_owner: 'Caitylyn', visit_date: '2023-01-23', visit_type: 'review',
+              visit_category: 'insurance', speciality: 'cardiology', member_no: '2A5R2', service: 'Treatment')
+  end
 
   before { subject.save }
 

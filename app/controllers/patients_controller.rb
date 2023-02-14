@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: %i[ show update destroy ]
+  before_action :set_patient, only: %i[show update destroy]
 
   # GET /patients
   def index
@@ -39,13 +39,15 @@ class PatientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_patient
-      @patient = Patient.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def patient_params
-      params.require(:patient).permit(:name, :age, :gender, :date_of_birth, :address, :phone_number, :next_of_kin, :next_of_kin_phone, :next_of_kin_address)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def patient_params
+    params.require(:patient).permit(:name, :age, :gender, :date_of_birth, :address, :phone_number, :next_of_kin,
+                                    :next_of_kin_phone, :next_of_kin_address)
+  end
 end
