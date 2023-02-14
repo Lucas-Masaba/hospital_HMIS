@@ -16,20 +16,26 @@ RSpec.describe "/visit_notes", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # VisitNote. As you add validations to VisitNote, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    {
+      complaints: 'Pain in the abdomen',
+      provisional_diagnosis: 'Gastritis'
+    }
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    {
+      complaints: 'Pain in the abdomen',
+      provisional_diagnosis: ''
+    }
+  end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
   # VisitNotesController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
-    {}
+    { 'Content-Type' => 'application/json' }
   }
 
   describe "GET /index" do
@@ -84,16 +90,22 @@ RSpec.describe "/visit_notes", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) do
+        {
+          complaints: 'Pain in the upper part of abdomen',
+          provisional_diagnosis: 'Gastritis'
+        }
+      end
 
       it "updates the requested visit_note" do
         visit_note = VisitNote.create! valid_attributes
         patch visit_note_url(visit_note),
               params: { visit_note: new_attributes }, headers: valid_headers, as: :json
         visit_note.reload
-        skip("Add assertions for updated state")
+        {
+          complaints: 'Pain in the upper part of abdomen',
+          provisional_diagnosis: 'Gastritis'
+        }
       end
 
       it "renders a JSON response with the visit_note" do
