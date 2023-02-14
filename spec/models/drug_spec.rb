@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Drug, type: :model do
   subject do
-    Drug.new(name: "Metrogyl", quantity: 100, drug_no: 1, location: "Store1")
+    Drug.new(name: 'Metrogyl', quantity: 100, drug_no: 1, location: 'Store1')
   end
 
   before { subject.save }

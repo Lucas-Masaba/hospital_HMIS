@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :drug do
-    name { "MyString" }
+    name { 'MyString' }
     quantity { 1 }
-    location { "MyString" }
-    drug_no { "" }
+    location { 'MyString' }
+    drug_no { '' }
   end
 
   factory :prescription do
@@ -31,6 +31,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
   end
+
   factory(:lab_test) do
     name { Faker::Internet.name }
     price { Faker::Internet.price }
