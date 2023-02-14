@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :drug do
+    name { "MyString" }
+    quantity { 1 }
+    location { "MyString" }
+    drug_no { "" }
+  end
+
   factory :prescription do
     product { 'MyString' }
     quantity { 1 }
