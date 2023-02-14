@@ -12,7 +12,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/visit_notes", type: :request do
+RSpec.describe '/visit_notes', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # VisitNote. As you add validations to VisitNote, be sure to
   # adjust the attributes here as well.
@@ -34,62 +34,62 @@ RSpec.describe "/visit_notes", type: :request do
   # in order to pass any filters (e.g. authentication) defined in
   # VisitNotesController, or in your router and rack
   # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
+  let(:valid_headers) do
     { 'Content-Type' => 'application/json' }
-  }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       VisitNote.create! valid_attributes
       get visit_notes_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       visit_note = VisitNote.create! valid_attributes
       get visit_note_url(visit_note), as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new VisitNote" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new VisitNote' do
+        expect do
           post visit_notes_url,
                params: { visit_note: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(VisitNote, :count).by(1)
+        end.to change(VisitNote, :count).by(1)
       end
 
-      it "renders a JSON response with the new visit_note" do
+      it 'renders a JSON response with the new visit_note' do
         post visit_notes_url,
              params: { visit_note: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new VisitNote" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new VisitNote' do
+        expect do
           post visit_notes_url,
                params: { visit_note: invalid_attributes }, as: :json
-        }.to change(VisitNote, :count).by(0)
+        end.to change(VisitNote, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new visit_note" do
+      it 'renders a JSON response with errors for the new visit_note' do
         post visit_notes_url,
              params: { visit_note: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
       let(:new_attributes) do
         {
           complaints: 'Pain in the upper part of abdomen',
@@ -97,7 +97,7 @@ RSpec.describe "/visit_notes", type: :request do
         }
       end
 
-      it "updates the requested visit_note" do
+      it 'updates the requested visit_note' do
         visit_note = VisitNote.create! valid_attributes
         patch visit_note_url(visit_note),
               params: { visit_note: new_attributes }, headers: valid_headers, as: :json
@@ -108,32 +108,32 @@ RSpec.describe "/visit_notes", type: :request do
         }
       end
 
-      it "renders a JSON response with the visit_note" do
+      it 'renders a JSON response with the visit_note' do
         visit_note = VisitNote.create! valid_attributes
         patch visit_note_url(visit_note),
               params: { visit_note: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a JSON response with errors for the visit_note" do
+    context 'with invalid parameters' do
+      it 'renders a JSON response with errors for the visit_note' do
         visit_note = VisitNote.create! valid_attributes
         patch visit_note_url(visit_note),
               params: { visit_note: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested visit_note" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested visit_note' do
       visit_note = VisitNote.create! valid_attributes
-      expect {
+      expect do
         delete visit_note_url(visit_note), headers: valid_headers, as: :json
-      }.to change(VisitNote, :count).by(-1)
+      end.to change(VisitNote, :count).by(-1)
     end
   end
 end

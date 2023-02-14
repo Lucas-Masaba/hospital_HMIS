@@ -1,5 +1,5 @@
 class VisitNotesController < ApplicationController
-  before_action :set_visit_note, only: %i[ show update destroy ]
+  before_action :set_visit_note, only: %i[show update destroy]
 
   # GET /visit_notes
   def index
@@ -39,13 +39,14 @@ class VisitNotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_visit_note
-      @visit_note = VisitNote.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def visit_note_params
-      params.require(:visit_note).permit(:complaints, :provisional_diagnosis)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_visit_note
+    @visit_note = VisitNote.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def visit_note_params
+    params.require(:visit_note).permit(:complaints, :provisional_diagnosis)
+  end
 end
