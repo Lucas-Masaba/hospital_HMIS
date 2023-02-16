@@ -22,6 +22,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_184738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lab_results", force: :cascade do |t|
+    t.string "results"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lab_tests", force: :cascade do |t|
     t.string "name"
     t.integer "price"
