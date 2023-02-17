@@ -12,116 +12,116 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/triages", type: :request do
+RSpec.describe '/triages', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Triage. As you add validations to Triage, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    { name: 'Test Triage', value_one: '35', value_two: '24', date_time: DateTime.now }
+  end
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) do
+    { name: 'Test Triage', value_one: '', value_two: '', date_time: DateTime.now }
+  end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
   # TriagesController, or in your router and rack
   # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
-    {}
-  }
+  let(:valid_headers) do
+    { 'Content-Type' => 'application/json' }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Triage.create! valid_attributes
       get triages_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       triage = Triage.create! valid_attributes
       get triage_url(triage), as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Triage" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Triage' do
+        expect do
           post triages_url,
                params: { triage: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(Triage, :count).by(1)
+        end.to change(Triage, :count).by(1)
       end
 
-      it "renders a JSON response with the new triage" do
+      it 'renders a JSON response with the new triage' do
         post triages_url,
              params: { triage: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Triage" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Triage' do
+        expect do
           post triages_url,
                params: { triage: invalid_attributes }, as: :json
-        }.to change(Triage, :count).by(0)
+        end.to change(Triage, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new triage" do
+      it 'renders a JSON response with errors for the new triage' do
         post triages_url,
              params: { triage: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
+        { name:'Test Triage', value_one: '32', value_two: '24', date_time: DateTime.now }
+      end
 
-      it "updates the requested triage" do
+      it 'updates the requested triage' do
         triage = Triage.create! valid_attributes
         patch triage_url(triage),
               params: { triage: new_attributes }, headers: valid_headers, as: :json
         triage.reload
-        skip("Add assertions for updated state")
+        { name: 'Test Triage', value_one: '32', value_two: '24', date_time: DateTime.now }
       end
 
-      it "renders a JSON response with the triage" do
+      it 'renders a JSON response with the triage' do
         triage = Triage.create! valid_attributes
         patch triage_url(triage),
               params: { triage: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
-    context "with invalid parameters" do
-      it "renders a JSON response with errors for the triage" do
+    context 'with invalid parameters' do
+      it 'renders a JSON response with errors for the triage' do
         triage = Triage.create! valid_attributes
         patch triage_url(triage),
               params: { triage: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested triage" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested triage' do
       triage = Triage.create! valid_attributes
-      expect {
+      expect do
         delete triage_url(triage), headers: valid_headers, as: :json
-      }.to change(Triage, :count).by(-1)
+      end.to change(Triage, :count).by(-1)
     end
   end
 end

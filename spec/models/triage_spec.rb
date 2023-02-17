@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Triage, type: :model do
   subject do
-    Triage.new(name: 'Test Triage', value_one: 1, value_two: 2, date_time: DateTime.now)
+    Triage.new(name: 'Test Triage', value_one: '35', value_two: '24', date_time: DateTime.now)
   end
 
   before { subject.save }
