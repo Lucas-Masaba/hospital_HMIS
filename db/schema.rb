@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_14_184738) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_17_105252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
-  create_table "drugs", force: :cascade do |t|
-    t.string "name"
-    t.integer "quantity"
-    t.string "location"
-    t.bigint "drug_no"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-   end
 
   create_table "attachments", force: :cascade do |t|
     t.string "name"
@@ -31,8 +22,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_184738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "diagnoses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drugs", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.string "location"
+    t.bigint "drug_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lab_results", force: :cascade do |t|
-    t.string "results"
+    t.string "lab_result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_184738) do
     t.string "next_of_kin"
     t.bigint "next_of_kin_phone"
     t.string "next_of_kin_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pharmacies", force: :cascade do |t|
     t.integer "dispensed"
@@ -107,6 +116,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_184738) do
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["jti"], name: "index_staffs_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
+  end
+
+  create_table "triages", force: :cascade do |t|
+    t.text "name"
+    t.string "value_one"
+    t.string "value_two"
+    t.datetime "date_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "visit_notes", force: :cascade do |t|
