@@ -85,7 +85,7 @@ RSpec.describe '/triages', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        { name:'Test Triage', value_one: '32', value_two: '24', date_time: DateTime.now }
+        { name: 'Test Triage', value_one: '32', value_two: '24', date_time: DateTime.now }
       end
 
       it 'updates the requested triage' do
