@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :patients
   resources :visits
   resources :normal_ranges
   resources :radiology_exams

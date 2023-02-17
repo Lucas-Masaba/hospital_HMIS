@@ -46,6 +46,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_184738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "patients", force: :cascade do |t|
+    t.text "name"
+    t.integer "age"
+    t.text "gender"
+    t.date "date_of_birth"
+    t.string "address"
+    t.bigint "phone_number"
+    t.string "next_of_kin"
+    t.bigint "next_of_kin_phone"
+    t.string "next_of_kin_address"
+
   create_table "pharmacies", force: :cascade do |t|
     t.integer "dispensed"
     t.datetime "created_at", null: false
