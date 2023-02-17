@@ -22,12 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_105252) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "diagnoses", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "drugs", force: :cascade do |t|
     t.string "name"
     t.integer "quantity"
@@ -38,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_105252) do
   end
 
   create_table "lab_results", force: :cascade do |t|
-    t.string "lab_result"
+    t.string "results"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_105252) do
   create_table "patients", force: :cascade do |t|
     t.text "name"
     t.integer "age"
-    t.text "gender"
+    t.bigint "gender"
     t.date "date_of_birth"
     t.string "address"
     t.bigint "phone_number"
