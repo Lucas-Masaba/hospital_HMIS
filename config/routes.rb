@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :visit_notes
+  resources :drugs
+  resources :prescriptions
+  resources :patients
   resources :visits
   resources :normal_ranges
   resources :radiology_exams

@@ -13,6 +13,15 @@
 ActiveRecord::Schema[7.0].define(version: 2023_02_14_195411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  
+  create_table "drugs", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.string "location"
+    t.bigint "drug_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+   end
 
   create_table "attachments", force: :cascade do |t|
     t.string "name"
@@ -52,8 +61,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_195411) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "patients", force: :cascade do |t|
+    t.text "name"
+    t.integer "age"
+    t.text "gender"
+    t.date "date_of_birth"
+    t.string "address"
+    t.bigint "phone_number"
+    t.string "next_of_kin"
+    t.bigint "next_of_kin_phone"
+    t.string "next_of_kin_address"
+
   create_table "pharmacies", force: :cascade do |t|
     t.integer "dispensed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string "product"
+    t.integer "quantity"
+    t.string "symbol"
+    t.integer "dose"
+    t.integer "days"
+    t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,6 +113,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_195411) do
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["jti"], name: "index_staffs_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
+  end
+
+  create_table "visit_notes", force: :cascade do |t|
+    t.text "complaints"
+    t.string "provisional_diagnosis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "visits", force: :cascade do |t|
