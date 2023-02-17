@@ -12,25 +12,27 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/drugs', type: :request do
+RSpec.describe '/visit_notes', type: :request do
   # This should return the minimal set of attributes required to create a valid
-  # Drug. As you add validations to Drug, be sure to
+  # VisitNote. As you add validations to VisitNote, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
-      name: 'Metrogyl', quantity: 100, drug_no: 1, location: 'Store1'
+      complaints: 'Pain in the abdomen',
+      provisional_diagnosis: 'Gastritis'
     }
   end
 
   let(:invalid_attributes) do
     {
-      name: '', quantity: 100, drug_no: 1, location: 'Store1'
+      complaints: 'Pain in the abdomen',
+      provisional_diagnosis: ''
     }
   end
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
-  # DrugsController, or in your router and rack
+  # VisitNotesController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) do
     { 'Content-Type' => 'application/json' }
@@ -38,48 +40,48 @@ RSpec.describe '/drugs', type: :request do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Drug.create! valid_attributes
-      get drugs_url, headers: valid_headers, as: :json
+      VisitNote.create! valid_attributes
+      get visit_notes_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      drug = Drug.create! valid_attributes
-      get drug_url(drug), as: :json
+      visit_note = VisitNote.create! valid_attributes
+      get visit_note_url(visit_note), as: :json
       expect(response).to be_successful
     end
   end
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new Drug' do
+      it 'creates a new VisitNote' do
         expect do
-          post drugs_url,
-               params: { drug: valid_attributes }, headers: valid_headers, as: :json
-        end.to change(Drug, :count).by(1)
+          post visit_notes_url,
+               params: { visit_note: valid_attributes }, headers: valid_headers, as: :json
+        end.to change(VisitNote, :count).by(1)
       end
 
-      it 'renders a JSON response with the new drug' do
-        post drugs_url,
-             params: { drug: valid_attributes }, headers: valid_headers, as: :json
+      it 'renders a JSON response with the new visit_note' do
+        post visit_notes_url,
+             params: { visit_note: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new Drug' do
+      it 'does not create a new VisitNote' do
         expect do
-          post drugs_url,
-               params: { drug: invalid_attributes }, as: :json
-        end.to change(Drug, :count).by(0)
+          post visit_notes_url,
+               params: { visit_note: invalid_attributes }, as: :json
+        end.to change(VisitNote, :count).by(0)
       end
 
-      it 'renders a JSON response with errors for the new drug' do
-        post drugs_url,
-             params: { drug: invalid_attributes }, headers: valid_headers, as: :json
+      it 'renders a JSON response with errors for the new visit_note' do
+        post visit_notes_url,
+             params: { visit_note: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including('application/json'))
       end
@@ -90,34 +92,36 @@ RSpec.describe '/drugs', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         {
-          name: 'Metrogyl', quantity: 120, drug_no: 1, location: 'Store1'
+          complaints: 'Pain in the upper part of abdomen',
+          provisional_diagnosis: 'Gastritis'
         }
       end
 
-      it 'updates the requested drug' do
-        drug = Drug.create! valid_attributes
-        patch drug_url(drug),
-              params: { drug: new_attributes }, headers: valid_headers, as: :json
-        drug.reload
+      it 'updates the requested visit_note' do
+        visit_note = VisitNote.create! valid_attributes
+        patch visit_note_url(visit_note),
+              params: { visit_note: new_attributes }, headers: valid_headers, as: :json
+        visit_note.reload
         {
-          name: 'Metrogyl', quantity: 120, drug_no: 1, location: 'Store1'
+          complaints: 'Pain in the upper part of abdomen',
+          provisional_diagnosis: 'Gastritis'
         }
       end
 
-      it 'renders a JSON response with the drug' do
-        drug = Drug.create! valid_attributes
-        patch drug_url(drug),
-              params: { drug: new_attributes }, headers: valid_headers, as: :json
+      it 'renders a JSON response with the visit_note' do
+        visit_note = VisitNote.create! valid_attributes
+        patch visit_note_url(visit_note),
+              params: { visit_note: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including('application/json'))
       end
     end
 
     context 'with invalid parameters' do
-      it 'renders a JSON response with errors for the drug' do
-        drug = Drug.create! valid_attributes
-        patch drug_url(drug),
-              params: { drug: invalid_attributes }, headers: valid_headers, as: :json
+      it 'renders a JSON response with errors for the visit_note' do
+        visit_note = VisitNote.create! valid_attributes
+        patch visit_note_url(visit_note),
+              params: { visit_note: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to match(a_string_including('application/json'))
       end
@@ -125,11 +129,11 @@ RSpec.describe '/drugs', type: :request do
   end
 
   describe 'DELETE /destroy' do
-    it 'destroys the requested drug' do
-      drug = Drug.create! valid_attributes
+    it 'destroys the requested visit_note' do
+      visit_note = VisitNote.create! valid_attributes
       expect do
-        delete drug_url(drug), headers: valid_headers, as: :json
-      end.to change(Drug, :count).by(-1)
+        delete visit_note_url(visit_note), headers: valid_headers, as: :json
+      end.to change(VisitNote, :count).by(-1)
     end
   end
 end
