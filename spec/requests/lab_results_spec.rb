@@ -9,7 +9,7 @@ RSpec.describe '/lab_results', type: :request do
 
   let(:invalid_attributes) do
     {
-      results: ""
+      results: ''
     }
   end
 
