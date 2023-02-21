@@ -10,16 +10,14 @@ Rails.application.routes.draw do
   resources :attachments
   resources :pharmacies
   resources :lab_results
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :diagnoses
+  resources :radiology_results
+  resources :lab_tests
+  
   devise_for :staffs, controllers: {
     sessions: 'staffs/sessions',
     registrations: 'staffs/registrations'
   }
 
   get '/staff_details' => 'staffs#index'
-
-  resources :lab_tests
 end
