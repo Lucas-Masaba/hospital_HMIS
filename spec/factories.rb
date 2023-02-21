@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :triage do
+    name { 'MyText' }
+    value_one { 'MyString' }
+    value_two { 'MyString' }
+    date_time { '2023-02-17 13:52:52' }
+  end
+
   factory :visit_note do
     complaints { 'MyText' }
     provisional_diagnosis { 'MyString' }
