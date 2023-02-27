@@ -8,6 +8,8 @@ class Staff < ApplicationRecord
 
   validates :email, presence: true
 
+  # belongs_to :patients
+
   def jwt_payload
     super.merge('foo' => 'bar')
   end
