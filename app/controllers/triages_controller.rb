@@ -47,6 +47,6 @@ class TriagesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def triage_params
-    params.require(:triage).permit(:name, :value_one, :value_two, :date_time)
+    params.require(:triage).permit(:name, :value_one, :value_two, :date_time, :visit_id)
   end
 end
