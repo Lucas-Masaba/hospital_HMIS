@@ -36,9 +36,16 @@ RSpec.describe '/visits', type: :request do
   end
 
   let!(:patient) do
-    Patient.create(name: 'Kemigisa Diana', age: 12, gender: 'F', date_of_birth: '2023-01-23',
-                   address: 'Kampala', phone_number: 256_777_777_777, next_of_kin: 'Mwine Tom',
-                   next_of_kin_phone: 256_770_773_778, next_of_kin_address: 'Kampala')
+    Patient.create(
+      name: 'Kemigisa Diana',
+      age: 12, gender: 'F',
+      date_of_birth: '2023-01-23',
+      address: 'Kampala',
+      phone_number: 256_777_777_777,
+      next_of_kin: 'Mwine Tom',
+      next_of_kin_phone: 256_770_773_778,
+      next_of_kin_address: 'Kampala'
+    )
   end
 
   describe 'GET /index' do
