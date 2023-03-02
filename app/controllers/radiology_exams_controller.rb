@@ -47,6 +47,6 @@ class RadiologyExamsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def radiology_exam_params
-    params.require(:radiology_exam).permit(:name, :description)
+    params.require(:radiology_exam).permit(:name, :description, :visit_id)
   end
 end
