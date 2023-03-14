@@ -1,5 +1,6 @@
 class Visit < ApplicationRecord
   belongs_to :patient
+  has_many :attachments, dependent: :destroy
   has_many :prescriptions, dependent: :destroy
 
   validates :visit_no, presence: true
