@@ -1,5 +1,5 @@
 class RadiologyExam < ApplicationRecord
-  belongs_to :visit, dependent: :destroy
+  belongs_to :visit
 
   validates :name, presence: true
   validates :description, presence: true

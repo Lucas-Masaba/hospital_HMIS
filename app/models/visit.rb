@@ -1,6 +1,6 @@
 class Visit < ApplicationRecord
   belongs_to :patient
-  has_many :radiology_exams
+  has_many :radiology_exams, dependent: :destroy
 
   validates :visit_no, presence: true
   validates :visit_owner, presence: true, length: { minimum: 3, maximum: 20 }
