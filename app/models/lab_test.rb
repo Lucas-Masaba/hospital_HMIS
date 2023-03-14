@@ -1,5 +1,5 @@
 class LabTest < ApplicationRecord
-  belongs_to :visit, dependent: :destroy
+  belongs_to :visit
 
   validates :name, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
