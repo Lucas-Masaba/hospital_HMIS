@@ -47,6 +47,6 @@ class AttachmentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def attachment_params
-    params.require(:attachment).permit(:name, :description, :admissions)
+    params.require(:attachment).permit(:name, :description, :admissions, :visit_id)
   end
 end
