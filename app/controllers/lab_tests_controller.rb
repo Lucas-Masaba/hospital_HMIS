@@ -47,6 +47,6 @@ class LabTestsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def lab_test_params
-    params.permit(:name, :price, :status, :referral_status)
+    params.permit(:name, :price, :status, :referral_status, :visit_id)
   end
 end
