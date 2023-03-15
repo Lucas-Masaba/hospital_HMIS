@@ -4,6 +4,7 @@ class Visit < ApplicationRecord
   has_many :prescriptions, dependent: :destroy
   has_many :drugs, dependent: :destroy
   has_many :triages, dependent: :destroy
+  has_many :radiology_exams, dependent: :destroy
 
   validates :visit_no, presence: true
   validates :visit_owner, presence: true, length: { minimum: 3, maximum: 20 }
