@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_070340) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_173947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_070340) do
     t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lab_test_id", null: false
+    t.index ["lab_test_id"], name: "index_normal_ranges_on_lab_test_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -114,6 +116,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_070340) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "radiology_exam_id", null: false
+    t.index ["radiology_exam_id"], name: "index_radiology_results_on_radiology_exam_id"
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -171,8 +175,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_070340) do
   add_foreign_key "attachments", "visits"
   add_foreign_key "drugs", "visits"
   add_foreign_key "lab_tests", "visits"
+  add_foreign_key "normal_ranges", "lab_tests"
   add_foreign_key "prescriptions", "visits"
   add_foreign_key "radiology_exams", "visits"
+  add_foreign_key "radiology_results", "radiology_exams"
   add_foreign_key "triages", "visits"
   add_foreign_key "visits", "patients"
 end
