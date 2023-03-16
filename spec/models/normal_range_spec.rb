@@ -38,15 +38,15 @@ RSpec.describe NormalRange, type: :model do
     )
   end
 
-  subject { 
+  subject do
     NormalRange.new(
       name: 'Heart Beat',
       upper_range: 30_000,
-      lower_range: 20_000, 
+      lower_range: 20_000,
       unit: 'bps',
       lab_test_id: lab_test.id
-      ) 
-    }
+    )
+  end
 
   before { subject.save }
 
