@@ -118,7 +118,7 @@ RSpec.describe '/visit_notes', type: :request do
       let(:new_attributes) do
         {
           complaints: 'Pain in the upper part of abdomen',
-          provisional_diagnosis: 'Gastritis',
+          provisional_diagnosis: 'Gastritis'
         }
       end
 
