@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_173947) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_160346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -156,6 +156,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_173947) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "visit_id", null: false
+    t.bigint "triage_id", null: false
+    t.index ["triage_id"], name: "index_visit_notes_on_triage_id"
     t.index ["visit_id"], name: "index_visit_notes_on_visit_id"
   end
 
@@ -182,6 +184,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_173947) do
   add_foreign_key "radiology_exams", "visits"
   add_foreign_key "radiology_results", "radiology_exams"
   add_foreign_key "triages", "visits"
+  add_foreign_key "visit_notes", "triages"
   add_foreign_key "visit_notes", "visits"
   add_foreign_key "visits", "patients"
 end
