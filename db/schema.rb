@@ -183,5 +183,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_173947) do
   add_foreign_key "radiology_results", "radiology_exams"
   add_foreign_key "triages", "visits"
   add_foreign_key "visit_notes", "visits"
+  add_foreign_key "prescriptions", "visits"
+  add_foreign_key "radiology_exams", "visits"
+  add_foreign_key "triages", "visits"
   add_foreign_key "visits", "patients"
 end
