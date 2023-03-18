@@ -28,11 +28,22 @@ RSpec.describe VisitNote, type: :model do
     )
   end
 
+  let!(:triage) do
+    Triage.create!(
+      name: 'Test Triage',
+      value_one: '35',
+      value_two: '24',
+      date_time: DateTime.now,
+      visit_id: visit.id
+    )
+  end
+
   subject do
     VisitNote.new(
       complaints: 'Pain in the abdomen',
       provisional_diagnosis: 'Gastritis',
-      visit_id: visit.id
+      visit_id: visit.id,
+      triage_id: triage.id
     )
   end
 
