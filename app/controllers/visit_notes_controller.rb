@@ -47,6 +47,6 @@ class VisitNotesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def visit_note_params
-    params.require(:visit_note).permit(:complaints, :provisional_diagnosis, :visit_id)
+    params.require(:visit_note).permit(:complaints, :provisional_diagnosis, :visit_id, :triage_id)
   end
 end
