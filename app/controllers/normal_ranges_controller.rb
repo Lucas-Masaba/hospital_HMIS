@@ -47,6 +47,6 @@ class NormalRangesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def normal_range_params
-    params.require(:normal_range).permit(:name, :lower_range, :upper_range, :unit)
+    params.require(:normal_range).permit(:name, :lower_range, :upper_range, :unit, :lab_test_id)
   end
 end
