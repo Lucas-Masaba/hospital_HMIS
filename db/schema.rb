@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_155531) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_173947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_155531) do
     t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lab_test_id", null: false
+    t.index ["lab_test_id"], name: "index_normal_ranges_on_lab_test_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -173,6 +175,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_155531) do
   add_foreign_key "attachments", "visits"
   add_foreign_key "drugs", "visits"
   add_foreign_key "lab_tests", "visits"
+  add_foreign_key "normal_ranges", "lab_tests"
   add_foreign_key "prescriptions", "visits"
   add_foreign_key "radiology_exams", "visits"
   add_foreign_key "radiology_results", "radiology_exams"
